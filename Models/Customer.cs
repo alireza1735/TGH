@@ -12,10 +12,10 @@ namespace Models
         public int CustomerID { get; set; }
         public string UserName { get; set; }
         [Required]
-        [DisplayName("First Name")]
+        [DisplayName("نام")]
         public string Name { get; set; }
         [Required]
-        [DisplayName("Last Name")]
+        [DisplayName("نام خانوادگی")]
         public string LastName { get; set; }
         [DisplayName("Father Name")]
         public string FatherName { get; set; }
