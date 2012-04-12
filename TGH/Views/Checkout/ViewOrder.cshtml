@@ -1,0 +1,43 @@
+﻿@model TGH.ViewModels.PaymentViewModel
+           
+@{
+    ViewBag.Title = "Confirm Payment";
+}
+
+<h2>تایید سفارش</h2>
+ضمن تشکر از حسن انتخاب شما، لطفا پس از انجام عملیات شماره پیگیری، تاریخ و ساعت تراکنش را نزد خود نگه دارید.<br />
+
+Name: @Html.Label(Model.Firstname +" "+ Model.Lastname)<br />
+Phone: @Html.Label(Model.Phone==null?" ":Model.Phone)<br />
+Email: @Html.Label(Model.Email)<br />
+
+<table>
+<tr>
+    <th>
+        محصول
+    </th>
+    <th>
+        قیمت
+    </th>
+    <th>
+        تعداد
+    </th>
+</tr>   
+    @foreach (var item in Model.CartItem)
+    {
+        <tr id="row-@item.ShoppingID">
+            <td>@Html.ActionLink(item.Product.Name,"Details","Product",new {id = item.ProductID},null)</td>
+            <td>@item.Price</td>
+            <td id="item-count-@item.ShoppingID">@item.Quantity</td>           
+        </tr>
+    }
+    <tr>
+        <td>جمع کل</td>
+        
+        <td id="cart-total">@Model.Total</td>
+<td></td>
+    </tr>
+    </table>
+    <br />
+    @Html.ActionLink("تایید سفارش", "ConfirmOrder")
+

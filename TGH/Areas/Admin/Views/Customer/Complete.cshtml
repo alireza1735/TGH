@@ -1,0 +1,10 @@
+﻿@model Models.Customer
+@{
+    ViewBag.Title = "Complete";
+}
+
+<h2>Complete</h2>
+
+User Creation Completed
+
+<img src="@Url.Action("getImage",new {id = Model.UserName})"/>

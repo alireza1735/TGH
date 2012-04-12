@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment</h2>
+نوع پرداخت پول را انتخاب کنید:<br />
+@using (Html.BeginForm()) {
+<input id="Cash" type="radio" name="PaymentType" value="Cash" /> @Html.Label("نقدی") <br />
+<input id="Credit" type="radio" name="PaymentType" value="Credit"/>@Html.Label("اعتباری") <br />
+<input id="Online" type="radio" name="PaymentType" value="Online"/>@Html.Label("آنلاین") <br />
+
+<input id="Submit1" type="submit" value="ارسال" />
+}
+

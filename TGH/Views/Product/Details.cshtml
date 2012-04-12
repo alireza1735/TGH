@@ -1,0 +1,44 @@
+﻿@model Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="product-image">
+   <img alt="@Model.Name" src="@Url.Action("getImage", new { id = Model.ProductID })" />
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Brand</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Brand)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductStores.OrderByDescending(d => d.TimeCreated).Single().SellPrice)
+    </div>
+
+    <div class="display-label">Rating</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rating)
+    </div>
+
+    <div class="display-label">RatingNumber</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RatingNumber)
+    </div>
+</fieldset>
+<p>
+@Html.ActionLink("Add To Shopping Cart", "AddToCart", "Shopping", new { id = Model.ProductID }, null) | 
+    @Html.ActionLink("Back to List", "Index")
+</p>

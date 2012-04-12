@@ -1,0 +1,41 @@
+﻿@model TGH.ViewModels.ShoppingCartViewModel
+           
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+<tr>
+    <th>
+        محصول
+    </th>
+    <th>
+        قیمت
+    </th>
+    <th>
+        تعداد
+    </th>
+    <th></th>
+</tr>   
+    @foreach (var item in Model.CartItems)
+    {
+        <tr id="row-@item.ShoppingID">
+            <td>@Html.ActionLink(item.Product.Name,"Details","Product",new {id = item.ProductID},null)</td>
+            <td>@item.Price</td>
+            <td id="item-count-@item.ShoppingID">@item.Quantity</td>
+            <td>@Html.ActionLink("Remove", "RemoveFromCart", new { id = item.ShoppingID })</td>            
+        </tr>
+    }
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="cart-total">@Model.CartTotal</td>
+
+    </tr>
+    
+
+</table>
+@Html.ActionLink("سفارش", "ViewOrder", "CheckOut")
